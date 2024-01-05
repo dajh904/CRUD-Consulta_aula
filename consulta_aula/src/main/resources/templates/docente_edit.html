@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title>Mostrar Docente</title>
+	<meta charset="utf8">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+	<header>
+		<div class="logo_titulo">
+			<img src="/img/unisimon.png" alt="logo Unisimon" class="logo">
+			<h1 class="titulo_proyecto">CRUD Consulta Aulas - Bloque B</h1>
+		</div>
+		<div class="menu">
+			<nav>
+				<ul>
+					<li><a th:href="@{/dia}">Dia</a></li>
+					<li><a th:href="@{/docente}">Docente</a></li>
+					<li><a th:href="@{/programa}">Programa</a></li>
+					<li><a th:href="@{/aula}">Aula</a></li>
+					<li><a th:href="@{/asignatura}">Asignatura</a></li>
+					<li><a th:href="@{/aula_asignatura}">Aula-Asignatura</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="container-fluid" style="margin-top: -40px;">
+		<h2 class="titulo_pag">EDITAR DOCENTE</h2>
+		<form th:object=${docente} class="show_form" th:action="@{/docente/save}" method="post">
+			<div class="mb-3">
+				<input type="hidden" class="form-control" id="ID" name="ID" th:field="*{ID}">
+			</div>
+			<div class="mb-3">
+				<label for="Nombres" class="form-label">Nombre:</label>
+				<input type="text" class="form-control" id="Nombres" name="Nombres" th:field="*{Nombre}" required>
+			</div>
+			<div class="mb-3">
+				<label for="Apellidos" class="form-label">Apellido:</label>
+				<input type="text" class="form-control" id="Apellidos" name="Apellidos" th:field="*{Apellido}" required>
+			</div>
+			<div class="mb-3 boton">
+				<a th:href="@{/docente}"><button type="button" class="btn btn-outline-danger">Volver</button></a>
+				<a><input type="submit" class="btn btn-outline-success" value="Editar"></a>
+			</div>
+		</form>
+	</div>
+
+	<footer>
+		<div>Diego Jaimes</div>
+	</footer>
+</body>
+
+</html>

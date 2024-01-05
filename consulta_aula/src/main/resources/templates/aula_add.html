@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title>Mostrar Aula</title>
+	<meta charset="utf8">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+	<header>
+		<div class="logo_titulo">
+			<img src="/img/unisimon.png" alt="logo Unisimon" class="logo">
+			<h1 class="titulo_proyecto">CRUD Consulta Aulas - Bloque B</h1>
+		</div>
+		<div class="menu">
+			<nav>
+				<ul>
+					<li><a th:href="@{/dia}">Dia</a></li>
+					<li><a th:href="@{/docente}">Docente</a></li>
+					<li><a th:href="@{/programa}">Programa</a></li>
+					<li><a th:href="@{/aula}">Aula</a></li>
+					<li><a th:href="@{/asignatura}">Asignatura</a></li>
+					<li><a th:href="@{/aula_asignatura}">Aula-Asignatura</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="container-fluid" style="margin-top: 20px;">
+		<h2 class="titulo_pag">AÑADIR AULA</h2>
+		<form th:object=${aula} class="show_form" th:action="@{/aula/save}" method="post">
+			<div class="mb-3">
+				<label for="ID" class="form-label">Aula:</label>
+				<input type="text" class="form-control" id="Identificacion" name="Identificacion" th:field="*{ID}" required>
+			</div>
+			<div class="mb-3">
+				<label for="Piso" class="form-label">Piso:</label>
+				<input type="text" class="form-control" id="Piso" name="Piso" th:field="*{Piso}" required>
+			</div>
+			<div class="mb-3">
+				<label for="Tipo" class="form-label">Tipo:</label>
+				<input type="text" class="form-control" id="Tipo" name="Tipo" th:field="*{Tipo}" required>
+			</div>
+			<div class="mb-3 boton">
+				<a th:href="@{/aula}"><button type="button" class="btn btn-outline-danger">Volver</button></a>
+				<a><input type="submit" class="btn btn-outline-success" value="Guardar"></a>
+			</div>
+		</form>
+	</div>
+
+	<footer>
+		<div>Diego Jaimes</div>
+	</footer>
+</body>
+
+</html>

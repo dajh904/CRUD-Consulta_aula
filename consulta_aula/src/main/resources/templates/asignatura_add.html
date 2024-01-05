@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title>Mostrar Asignatura</title>
+	<meta charset="utf8">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+	<header>
+		<div class="logo_titulo">
+			<img src="/img/unisimon.png" alt="logo Unisimon" class="logo">
+			<h1 class="titulo_proyecto">CRUD Consulta Aulas - Bloque B</h1>
+		</div>
+		<div class="menu">
+			<nav>
+				<ul>
+					<li><a th:href="@{/dia}">Dia</a></li>
+					<li><a th:href="@{/docente}">Docente</a></li>
+					<li><a th:href="@{/programa}">Programa</a></li>
+					<li><a th:href="@{/aula}">Aula</a></li>
+					<li><a th:href="@{/asignatura}">Asignatura</a></li>
+					<li><a th:href="@{/aula_asignatura}">Aula-Asignatura</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="container-fluid" style="margin-top: 40px;">
+		<h2 class="titulo_pag">AÑADIR ASIGNATURA</h2>
+		<form th:object=${asign} class="show_form" th:action="@{/asignatura/save}" method="post">
+			<div class="mb-3">
+				<label for="ID" class="form-label">Código:</label>
+				<input type="text" class="form-control" id="Identificacion" name="Identificacion" th:field="*{Cod}" required>
+			</div>
+			<div class="mb-3">
+				<label for="Asignatura" class="form-label">Asignatura:</label>
+				<input type="text" class="form-control" id="Asignatura" name="Asignatura" th:field="*{Nombre}" required>
+			</div>
+			<div class="mb-3">
+				<label for="Semestre" class="form-label">Semestre:</label>
+				<input type="text" class="form-control" id="Semestre" name="Semestre" th:field="*{Semestre}" required>
+			</div>
+			<div class="mb-3">
+				<label for="Docente" class="form-label">Docente:</label>
+				<select class="form-control" id="Docente" name="Docente" th:field="*{docente}">
+					<option th:each="docente:${docente}" th:value="${docente.ID}"
+						th:text="${docente.Nombre} + ' ' + ${docente.Apellido}">
+					</option>
+				</select>
+			</div>
+			<div class="mb-3">
+				<label for="Programa" class="form-label">Programa:</label>
+				<select class="form-control" id="Programa" name="Programa" th:field="*{programa}">
+					<option th:each="programa:${programa}" th:value="${programa.ID}" th:text="${programa.Nombre}">
+					</option>
+				</select>
+			</div>
+			<div class="mb-3 boton">
+				<a th:href="@{/asignatura}"><button type="button" class="btn btn-outline-danger">Volver</button></a>
+				<a><input type="submit" class="btn btn-outline-success" value="Guardar"></a>
+			</div>
+		</form>
+	</div>
+	<footer>
+		<div>Diego Jaimes</div>
+	</footer>
+</body>
+
+</html>

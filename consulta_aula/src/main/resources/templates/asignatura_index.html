@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>CRUD Asignatura</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+    <header>
+        <div class="logo_titulo">
+            <img src="/img/unisimon.png" alt="logo Unisimon" class="logo">
+            <h1 class="titulo_proyecto">CRUD Consulta Aulas - Bloque B</h1>
+        </div>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a th:href="@{/dia}">Dia</a></li>
+                    <li><a th:href="@{/docente}">Docente</a></li>
+                    <li><a th:href="@{/programa}">Programa</a></li>
+                    <li><a th:href="@{/aula}">Aula</a></li>
+                    <li><a th:href="@{/asignatura}">Asignatura</a></li>
+                    <li><a th:href="@{/aula_asignatura}">Aula-Asignatura</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h2 class="titulo_pag">GESTIÓN ASIGNATURAS</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Código</th>
+                    <th class="col-4">Nombre</th>
+                    <th>Semestre</th>
+                    <th>Programa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="asign:${asignaturas}">
+                    <td>
+                        <a th:href="@{/asignatura/mostrar/} + ${asign.Cod}"><img src="/img/show.svg" class="btn-index"></a>
+                        <a th:href="@{/asignatura/editar/} + ${asign.Cod}"><img src="img/edit.svg" class="btn-index"></a>
+                        <a th:href="@{/asignatura/borrar/} + ${asign.Cod}"><img src="/img/delete.svg" class="btn-index"></a>
+                    </td>
+                    <td th:text="${asign.Cod}"></td>
+                    <td th:text="${asign.Nombre}"></td>
+                    <td th:text="${asign.Semestre}"></td>
+                    <td th:text="${asign.programa.Nombre}"></td>
+                </tr>
+                <tr class="boton">
+                    <td colspan="5">
+                        <a th:href="@{/asignatura/anadir}"><button type="button" class="btn btn-outline-success">+ Añadir</button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <div>Diego Jaimes</div>
+    </footer>
+</body>
+
+</html>

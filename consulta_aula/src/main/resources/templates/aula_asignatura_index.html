@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>CRUD Aula-Asignatura</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+    <header>
+        <div class="logo_titulo">
+            <img src="/img/unisimon.png" alt="logo Unisimon" class="logo">
+            <h1 class="titulo_proyecto">CRUD Consulta Aulas - Bloque B</h1>
+        </div>
+        <div class="menu">
+            <nav>
+                <ul>
+                    <li><a th:href="@{/dia}">Dia</a></li>
+                    <li><a th:href="@{/docente}">Docente</a></li>
+                    <li><a th:href="@{/programa}">Programa</a></li>
+                    <li><a th:href="@{/aula}">Aula</a></li>
+                    <li><a th:href="@{/asignatura}">Asignatura</a></li>
+                    <li><a th:href="@{/aula_asignatura}">Aula-Asignatura</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <h2 class="titulo_pag">GESTIÓN AULAS - ASIGNATURAS</h2>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th class="col-3"></th>
+                    <th class="col-2">Dia</th>
+                    <th class="col-4">Asignatura</th>
+                    <th class="col-4">Aula</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="aula_asign:${aulas_asign}">
+                    <td>
+                        <a th:href="@{/aula_asignatura/mostrar/} + ${aula_asign.ID}"><img src="/img/show.svg"
+                                class="btn-index"></a>
+                        <a th:href="@{/aula_asignatura/editar/} + ${aula_asign.ID}"><img src="img/edit.svg"
+                                class="btn-index"></a>
+                        <a th:href="@{/aula_asignatura/borrar/} + ${aula_asign.ID}"><img src="/img/delete.svg"
+                                class="btn-index"></a>
+                    </td>
+                    <td th:text="${aula_asign.dia.Nombre}"></td>
+                    <td th:text="${aula_asign.asignatura.Nombre}"></td>
+                    <td th:text="${aula_asign.aula.ID}"></td>
+                </tr>
+                <tr class="boton">
+                    <td colspan="4">
+                        <a th:href="@{/aula_asignatura/anadir}"><button type="button" class="btn btn-outline-success">+
+                                Añadir</button></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <div>Diego Jaimes</div>
+    </footer>
+</body>
+
+</html>

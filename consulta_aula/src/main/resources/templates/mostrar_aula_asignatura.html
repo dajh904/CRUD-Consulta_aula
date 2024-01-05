@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<title>Mostrar Aula-Asignatura</title>
+	<meta charset="utf8">
+	<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+	<link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+
+<body>
+	<header>
+		<div class="logo_titulo">
+			<img src="/img/unisimon.png" alt="logo Unisimon" class="logo">
+			<h1 class="titulo_proyecto">CRUD Consulta Aulas - Bloque B</h1>
+		</div>
+		<div class="menu">
+			<nav>
+				<ul>
+					<li><a th:href="@{/dia}">Dia</a></li>
+					<li><a th:href="@{/docente}">Docente</a></li>
+					<li><a th:href="@{/programa}">Programa</a></li>
+					<li><a th:href="@{/aula}">Aula</a></li>
+					<li><a th:href="@{/asignatura}">Asignatura</a></li>
+					<li><a th:href="@{/aula_asignatura}">Aula-Asignatura</a></li>
+				</ul>
+			</nav>
+		</div>
+	</header>
+	<div class="container-fluid" style="margin-top: 40px;">
+		<h2 class="titulo_pag">MOSTRAR AULA-ASIGNATURA</h2>
+
+		<form th:object=${aula_asign_m} class="show_form">
+			<div class="mb-3">
+				<label for="ID" class="form-label">ID:</label>
+				<input type="text" class="form-control" id="Identificacion" name="Identificacion" disabled
+					th:value="${aula_asign_m.ID}">
+			</div>
+			<div class="mb-3">
+				<label for="Dia" class="form-label">Dia:</label>
+				<input type="text" class="form-control" id="Dia" name="Dia" disabled
+					th:value="${aula_asign_m.dia.Nombre}">
+			</div>
+			<div class="mb-3">
+				<label for="Asignatura" class="form-label">Asignatura:</label>
+				<input type="text" class="form-control" id="Asignatura" name="Asignatura" disabled
+					th:value="${aula_asign_m.asignatura.Nombre}">
+			</div>
+			<div class="mb-3">
+				<label for="Aula" class="form-label">Aula:</label>
+				<input type="text" class="form-control" id="Aula" name="Aula" disabled
+					th:value="${aula_asign_m.aula.ID}">
+			</div>
+			<div class="mb-3">
+				<label for="Hora_ini" class="form-label">Hora inicio:</label>
+				<input type="text" class="form-control" id="Hora_ini" name="Hora_ini" disabled
+					th:value="${aula_asign_m.Hora_ini}">
+			</div>
+			<div class="mb-3">
+				<label for="Hora_fin" class="form-label">Hora fin:</label>
+				<input type="text" class="form-control" id="Hora_fin" name="Hora_fin" disabled
+					th:value="${aula_asign_m.Hora_fin}">
+			</div>
+			<div class="mb-3 boton">
+				<a th:href="@{/aula_asignatura}"><button type="button"
+						class="btn btn-outline-success">Volver</button></a>
+			</div>
+		</form>
+	</div>
+
+	<footer>
+		<div>Diego Jaimes</div>
+	</footer>
+</body>
+
+</html>
